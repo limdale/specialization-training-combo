@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddQuoteViewController.h
 //  ActCoolMenu
 //
 //  Created by Dale Ansley Lim on 11/26/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface AddQuoteViewController : UIViewController <UITextFieldDelegate>
 
 @end
-

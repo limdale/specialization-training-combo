@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "CoolMenuViewController.h"
+#import "RandomViewController.h"
+#import "ListViewController.h"
+#import "AboutViewController.h"
+#import "TextStylerViewController.h"
+#import "AddQuoteViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +23,29 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    CoolMenuViewController *coolMenuViewController = [[CoolMenuViewController alloc] init];
+    UITabBarController *tabController = [[UITabBarController alloc] init];
+    TextStylerViewController *textStylerController = [[TextStylerViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:coolMenuViewController];
+    [coolMenuViewController setNavigationController:nav];
+    
+    // setup memorable quote controllers
+    ListViewController *table = [[ListViewController alloc] init];
+    RandomViewController *random = [[RandomViewController alloc] init];
+    AddQuoteViewController *add = [[AddQuoteViewController alloc] init];
+    AboutViewController *about = [[AboutViewController alloc] init];
+    [table setNavigationController:nav];
+    NSArray *controllerArray = @[random, table, add, about];
+    [tabController setViewControllers:controllerArray];
+    
+    //setup controller references
+    [coolMenuViewController setTabViewController:tabController];
+    [coolMenuViewController setTextStylerViewController:textStylerController];
+    
+    self.window.rootViewController = nav;
+    //self.window.rootViewController = [[AddQuoteViewController alloc] init];
+    
     return YES;
 }
 
